@@ -51,6 +51,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // 先建立自适应布局，再初始化播放器和各项交互功能。
+    setupMainLayout();
+
     // 初始化托盘相关指针
     m_trayIcon = 0;
     m_trayPlayAction = 0;
@@ -1037,6 +1040,74 @@ void MainWindow::applyTheme(int themeIndex)
             "QMenu::item:selected {"
             "    background-color: #dbeafe;"
             "}";
+    }
+
+    // 为新的分区面板补充卡片样式，并突出主播放按钮。
+    if(themeIndex == 1)
+    {
+        styleSheet +=
+            "QFrame#leftPanel, QFrame#nowPlayingPanel, QFrame#lyricsPanel, QFrame#playerPanel {"
+            "    background-color: #252b35;"
+            "    border: 1px solid #343b48;"
+            "    border-radius: 14px;"
+            "}"
+            "QLabel#appTitle {"
+            "    color: #f8fafc;"
+            "    font-size: 24px;"
+            "    font-weight: bold;"
+            "}"
+            "QLabel#sectionTitle {"
+            "    color: #f3f4f6;"
+            "    font-size: 17px;"
+            "    font-weight: bold;"
+            "}"
+            "QPushButton#btnPlay {"
+            "    background-color: #3b82f6;"
+            "    color: white;"
+            "    border-color: #3b82f6;"
+            "    font-weight: bold;"
+            "}"
+            "QPushButton#btnPlay:hover {"
+            "    background-color: #60a5fa;"
+            "}"
+            "QListWidget#listLyrics {"
+            "    background-color: transparent;"
+            "    border: none;"
+            "}";
+    }
+    else
+    {
+        styleSheet +=
+            "QFrame#leftPanel, QFrame#nowPlayingPanel, QFrame#lyricsPanel, QFrame#playerPanel {"
+            "    background-color: white;"
+            "    border: 1px solid #e2e8f0;"
+            "    border-radius: 14px;"
+            "}"
+            "QLabel#appTitle {"
+            "    color: #0f172a;"
+            "    font-size: 24px;"
+            "    font-weight: bold;"
+            "}"
+            "QLabel#sectionTitle {"
+            "    color: #1e293b;"
+            "    font-size: 17px;"
+            "    font-weight: bold;"
+            "}"
+            "QPushButton#btnPlay {"
+            "    background-color: #2563eb;"
+            "    color: white;"
+            "    border-color: #2563eb;"
+            "    font-weight: bold;"
+            "}"
+            "QPushButton#btnPlay:hover {"
+            "    background-color: #3b82f6;"
+            "    color: white;"
+            "}"
+            "QListWidget#listLyrics {"
+            "    background-color: transparent;"
+            "    border: none;"
+            "}";
+
     }
 
     // qApp 表示整个应用程序。因此样式不仅会应用到主窗口，也会应用到提示框和菜单。
