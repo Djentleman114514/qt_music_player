@@ -38,6 +38,9 @@ protected:
 private:
     Ui::MainWindow *ui;
 
+    // 使用布局管理器重新组织主窗口中的控件，使界面能够跟随窗口大小变化。
+    void setupMainLayout();
+
     QString m_currentMusicPath;    //当前选择的音乐路径
     QMediaPlayer *m_player;         // 音乐播放器对象
     QStringList m_musicList;        //保存所有歌曲路径
