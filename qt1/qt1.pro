@@ -33,6 +33,7 @@ SOURCES += \
         mainwindow_setup.cpp \
         mainwindow_favorites.cpp \
         mainwindow_customplaylists.cpp \
+        mainwindow_layout.cpp \
         mainwindow_volume.cpp
 
 HEADERS += \
